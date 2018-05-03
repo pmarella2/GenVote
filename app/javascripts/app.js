@@ -227,7 +227,7 @@ window.voteForCandidate = function(candidate) {
                                                                                 //window.alert("got here!")
 
                                                                                 verifyDecrypt(convVote).done(function(cv) {
-                                                                                    $("#msg").html("Voting c " + cv)
+                                                                                    //$("#msg").html("Voting c " + cv)
                                                                                     if (vtw == cv) {
                                                                                         cont = 1
                                                                                         contract.changeBallotStatus({
