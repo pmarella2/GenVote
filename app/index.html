@@ -37,7 +37,8 @@
         <a href="#" onclick="loadBallot()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Load</a>
         <br>
         <br>
-        <!-- Vote on Balot -->
+        <!-- Vote on Ballot -->
+        <br>
         <h2 style="color:rgb(0,0,255)">Vote for your choice:</h2>
         <br>
         <b style="color:rgb(255,90,0)">Load ballot prior to voting</b>
@@ -52,21 +53,35 @@
         <a href="#" onclick="voteForCandidate()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Vote</a>
         <br>
         <br>
-        <!-- Register to Vote -->
+        <h1 style="color:rgb(0,0,0)">OR</h1>
         <br>
         <br>
-        <h2 style="color:rgb(0,0,255)">Register to Vote:</h2>
-        <div id="msg2"></div>
-        <input type="text" id="idnum" placeholder="Your BSU student/employee ID" style="width: 250px" />
+        <!-- Vote on Balot w/ Logic -->
+        <h2 style="color:rgb(0,0,255)">Vote for your choice (Logically):</h2>
+        <br>
+        <b style="color:rgb(255,90,0)">Load ballot prior to voting</b>
+        <br>
+        <div id="msg"></div>
+        <input type="radio" style="width: 25px" name="logicvote" value="0"> <b>Winning Vote</b> (Vote for the candidate/choice that is winning)
+        <br>
+        <input type="radio" style="width: 25px" name="logicvote" value="1"> <b>Runner-Up Vote</b> (Vote for the candidate/choice that is in second place)
+        <br>
+        <input type="radio" style="width: 25px" name="logicvote" value="2"> <b>Losing Vote</b> (Vote for the candidate/choice that is in last place)
         <br>
         <br>
-        <input type="text" id="email" placeholder="Your e-mail address" style="width: 400px" />
+        <b style="color:rgb(255,90,0)">Choose when to vote:</b>
+        <br>
+        <input type="radio" style="width: 25px" name="votetime" value="0"> <b>Vote Now</b> (Send my vote now)
+        <br>
+        <input type="radio" style="width: 25px" name="votetime" value="1"> <b>Vote Later</b> (Send my vote a few minutes before the ballot ends)
         <br>
         <br>
-        <input type="radio" style="width: 25px" name="permreq" value="1"> <b>Request Ballot Creation Permission</b> <br>(You will be notified about ballot creation access at a later time)
+        <input type="text" id="e-mail2" placeholder="Your registered e-mail address" style="width: 400px" />
         <br>
         <br>
-        <a href="#" onclick="registerToVote()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Register</a>
+        <a href="#" onclick="logicVoteForCandidate()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Vote</a>
+        <br>
+        <!-- -->
 
     </div>
     </div>
@@ -125,6 +140,24 @@
             </form>
             <br>
             <a href="#" onclick="ballotSetup()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Create</a>
+            <br>
+
+            <!-- Register to Vote -->
+            <br>
+            <br>
+            <h2 style="color:rgb(0,0,255)">Register to Vote:</h2>
+            <div id="msg2"></div>
+            <input type="text" id="idnum" placeholder="Your BSU student/employee ID" style="width: 260px" />
+            <br>
+            <br>
+            <input type="text" id="email" placeholder="Your e-mail address" style="width: 400px" />
+            <br>
+            <br>
+            <input type="radio" style="width: 25px" name="permreq" value="1"> <b>Request Ballot Creation Permission</b> <br>(You will be notified about ballot creation access at a later time)
+            <br>
+            <br>
+            <a href="#" onclick="registerToVote()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Register</a>
+            <br>
         </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
