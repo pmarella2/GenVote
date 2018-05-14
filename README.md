@@ -1,4 +1,4 @@
-# GenVote: A Customizable and Secure Voting System using Ethereum's Blockchain
+# GenVote: Customizable and Secure Voting Platform using Ethereum Blockchain
 
 Description: *To-Do
 
