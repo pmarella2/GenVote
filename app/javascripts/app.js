@@ -322,7 +322,7 @@ window.logicVoteForCandidate = function(candidate) {
 function getcandHash(candidateArray, votingAddress, evoter) {
     let largestVote = 0
     let runnerupVote = 0
-    let lastVote = Number.MAX_VALUE
+    let lastVote = 999999
     let logictype = $("input[name=logicvote]:checked").val()
     let whentovote = $("input[name=votetime]:checked").val()
     let largestCand = null
@@ -389,7 +389,7 @@ function getcandHash(candidateArray, votingAddress, evoter) {
                     }
 
                     if (i == candidateArray.length-1) {
-                        $("#msg").html("RunnerUp Cand " + logicHash)
+                        $("#msg").html("Winning " + largestVote + " Runner-Up " + runnerupVote + " Losing " + lastVote)
                         if (whentovote == 0) {
                             logicallyVote(evoter, logicHash)
                         }
@@ -410,9 +410,8 @@ function getCurrentVotes(hcHash, votingAddress) {
 
             verifyDecrypt(convVote).done(function(cv) {
                 //window.alert("got here!")
-                $("#msg").html("RunnerUp 2Vote " + cv)
+                //$("#msg").html("RunnerUp 2Vote " + cv)
                 return cv
-
             })
         })
     })

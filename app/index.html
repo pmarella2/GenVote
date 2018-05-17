@@ -9,13 +9,13 @@
 
 <body class="container" style="background-color:rgb(255,255,255)">
     <div class="col-sm-7">
-        <h2 style="color:rgb(255,90,0)">Bronco</h2>
-        <h2 style="color:rgb(0,0,255)">Votes</h2>
-        <h2 style="color:rgb(0,0,0)">: Alpha v1.1</h2>
+        <h2 style="color:rgb(0, 110, 253)">Gen</h2>
+        <h2 style="color:rgb(0, 0, 0)">Vote</h2>
+        <h2 style="color:rgb(247, 131, 6)">: Alpha v1.1</h2>
         <br>
         <br>
         <br>
-        <h2 id="btitle" style="color:rgb(255,90,0)"> </h2>
+        <h2 id="btitle" style="color:rgb(247, 131, 6)"> </h2>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -29,19 +29,19 @@
             </table>
         </div>
         <!-- Load Ballot -->
-        <h2 style="color:rgb(0,0,255)">Load Ballot:</h2>
+        <h2 style="color:rgb(0, 110, 253)">Load Ballot:</h2>
         <div id="msg4"></div>
         <input type="text" id="ballotid" placeholder="Enter ballot ID" style="width: 250px" />
         <br>
         <br>
-        <a href="#" onclick="loadBallot()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Load</a>
+        <a href="#" onclick="loadBallot()" class="btn btn-primary" style="background-color:rgb(247, 131, 6)">Load</a>
         <br>
         <br>
         <!-- Vote on Ballot -->
         <br>
-        <h2 style="color:rgb(0,0,255)">Vote for your choice:</h2>
+        <h2 style="color:rgb(0, 110, 253)">Vote for your choice:</h2>
         <br>
-        <b style="color:rgb(255,90,0)">Load ballot prior to voting</b>
+        <b style="color:rgb(247, 131, 6)">Load ballot prior to voting</b>
         <br>
         <div id="msg"></div>
         <input type="text" id="candidate" placeholder="Enter the candidate name" style="width: 250px" />
@@ -50,16 +50,16 @@
         <input type="text" id="e-mail" placeholder="Your registered e-mail address" style="width: 400px" />
         <br>
         <br>
-        <a href="#" onclick="voteForCandidate()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Vote</a>
+        <a href="#" onclick="voteForCandidate()" class="btn btn-primary" style="background-color:rgb(247, 131, 6)">Vote</a>
         <br>
         <br>
         <h1 style="color:rgb(0,0,0)">OR</h1>
         <br>
         <br>
         <!-- Vote on Balot w/ Logic -->
-        <h2 style="color:rgb(0,0,255)">Vote for your choice (Logically):</h2>
+        <h2 style="color:rgb(0, 110, 253)">Vote for your choice (Logically):</h2>
         <br>
-        <b style="color:rgb(255,90,0)">Load ballot prior to voting</b>
+        <b style="color:rgb(247, 131, 6)">Load ballot prior to voting</b>
         <br>
         <div id="msg"></div>
         <input type="radio" style="width: 25px" name="logicvote" value="0"> <b>Winning Vote</b> (Vote for the candidate/choice that is winning)
@@ -69,7 +69,7 @@
         <input type="radio" style="width: 25px" name="logicvote" value="2"> <b>Losing Vote</b> (Vote for the candidate/choice that is in last place)
         <br>
         <br>
-        <b style="color:rgb(255,90,0)">Choose when to vote:</b>
+        <b style="color:rgb(247, 131, 6)">Choose when to vote:</b>
         <br>
         <input type="radio" style="width: 25px" name="votetime" value="0"> <b>Vote Now</b> (Send my vote now)
         <br>
@@ -79,7 +79,7 @@
         <input type="text" id="e-mail2" placeholder="Your registered e-mail address" style="width: 400px" />
         <br>
         <br>
-        <a href="#" onclick="logicVoteForCandidate()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Vote</a>
+        <a href="#" onclick="logicVoteForCandidate()" class="btn btn-primary" style="background-color:rgb(247, 131, 6)">Vote</a>
         <br>
         <!-- -->
 
@@ -92,12 +92,12 @@
             <br>
             <br>
             <!-- Create Ballot -->
-            <h2 style="color:rgb(0,0,255)">Create Ballot:</h2>
+            <h2 style="color:rgb(0, 110, 253)">Create Ballot:</h2>
             <div id="msg3"></div>
-            <input type="text" id="cemail" placeholder="Your e-mail address" style="width: 400px" />
+            <input type="text" id="cemail" placeholder="Your registered e-mail address" style="width: 400px" />
             <br>
             <br>
-            <b style="color:rgb(255,90,0)">Select ballot type:</b>
+            <b style="color:rgb(247, 131, 6)">Select ballot type:</b>
             <br>
             <input type="radio" style="width: 25px" name="ballottype" value="0"> <b>Poll</b> (results are displayed live)
             <br>
@@ -109,7 +109,7 @@
             <input type="text" id="vtitle" placeholder="Title of your ballot" style="width: 400px" />
             <br>
             <br>
-            <b style="color:rgb(0,0,255)">Seperate each candidate/choice with a comma:</b>
+            <b style="color:rgb(0, 110, 253)">Seperate each candidate/choice with a comma:</b>
             <br>
             <input type="text" id="choices" placeholder="Candidates/Choices" style="width: 400px" />
             <br>
@@ -120,32 +120,32 @@
             <input type="text" id="votestowin" placeholder="Number of votes to win (if First to X Votes option)" style="width: 400px" />
             <br>
             <br>
-            <b style="color:rgb(255,90,0)">Select voting restriction:</b>
+            <b style="color:rgb(247, 131, 6)">Select voting restriction:</b>
             <br>
             <input type="radio" style="width: 25px" name="whitelist" value="0"> <b>Non-Whitelist</b> (all e-mails with whitelisted domain are allowed to vote)
             <br>
             <input type="radio" style="width: 25px" name="whitelist" value="1"> <b>Whitelist</b> (only certain e-mails with whitelisted domain are allowed to vote)
             <br>
             <br>
-            <b style="color:rgb(0,0,255)">Seperate each e-mail address with a comma: </b>
+            <b style="color:rgb(0, 110, 253)">Seperate each e-mail address with a comma: </b>
             <br>
             <input type="text" id="whitelisted" placeholder="Whitelisted e-mail addresses (if Whitelist option)" style="width: 400px" />
             <br>
             <br>
             <form>
-                <b style="color:rgb(255,90,0)">Select Poll End Date and Time:</b>
+                <b style="color:rgb(247, 131, 6)">Select Poll End Date and Time:</b>
                 <br>
                 <input type="date" id="date" style="width: 170px">
                 <input type="time" id="time" style="width: 125px">
             </form>
             <br>
-            <a href="#" onclick="ballotSetup()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Create</a>
+            <a href="#" onclick="ballotSetup()" class="btn btn-primary" style="background-color:rgb(247, 131, 6)">Create</a>
             <br>
 
             <!-- Register to Vote -->
             <br>
             <br>
-            <h2 style="color:rgb(0,0,255)">Register to Vote:</h2>
+            <h2 style="color:rgb(0, 110, 253)">Register to Vote:</h2>
             <div id="msg2"></div>
             <input type="text" id="idnum" placeholder="Your BSU student/employee ID" style="width: 260px" />
             <br>
@@ -156,7 +156,7 @@
             <input type="radio" style="width: 25px" name="permreq" value="1"> <b>Request Ballot Creation Permission</b> <br>(You will be notified about ballot creation access at a later time)
             <br>
             <br>
-            <a href="#" onclick="registerToVote()" class="btn btn-primary" style="background-color:rgb(255,90,0)">Register</a>
+            <a href="#" onclick="registerToVote()" class="btn btn-primary" style="background-color:rgb(247, 131, 6)">Register</a>
             <br>
         </div>
 </body>
