@@ -1,4 +1,4 @@
-# GenVote: Customizable and Secure Voting Platform using Ethereum Blockchain
+# BlockVote: Customizable and Secure Voting Platform using Ethereum Blockchain
 
 Description: *To-Do
 
