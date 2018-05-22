@@ -331,73 +331,125 @@ function getcandHash(candidateArray, votingAddress, evoter) {
     let logicHash = null
 
     Voting.at(votingAddress).then(function(contract) {
-    for (let i = 0; i < candidateArray.length; i++) {
-        let hcand = (web3.toUtf8(candidateArray[i]))
-        let hcHash = sha3withsize(hcand, 32)
-
-        //$("#msg").html("RunnerUp Vote " + hcand)
-
-        //contract.totalVotesFor.call(hcHash).then(function(v) {
-        //var convVote = v.toString()
-
-        //var convVote = getCurrentVotes(hcHash)
-        //convVote = scientificToDecimal(convVote)
-        //let checkvote = getCurrentVotes(hcHash, votingAddress)
-
-        //verifyDecrypt(convVote).done(function(cv) {
-        //Voting.at(votingAddress).then(function(contract) {
-            contract.totalVotesFor.call(hcHash).then(function(v) {
-                var convVote = v.toString()
-                convVote = scientificToDecimal(convVote)
-
-                verifyDecrypt(convVote).done(function(cv) {
-                    //window.alert("got here!")
-                    //$("#msg").html("RunnerUp 2Vote " + cv)
-                    let checkvote = cv
-
-                   // $("#msg").html("RunnerUp Vote " + checkvote)
-                    //window.alert("got here!")
-
-                    if (checkvote >= largestVote) {
-                        runnerupVote = largestVote
-                        largestVote = checkvote
-                        runnerupCand = largestCand
-                        largestCand = hcHash
-                    } else if (checkvote > runnerupVote) {
-                        runnerupVote = checkvote
-                        runnerupCand = hcHash
-                    }
-
-                    if (checkvote < lastVote) {
-                        lastVote = checkvote
-                        lastCand = hcHash
-                    } else if (checkvote == lastVote) {
-                        let randChoice = Math.floor(Math.random() * 2)
-
-                        if (randChoice == 1) {
-                            lastCand = hcHash
-                        }
-                    }
-
-
-                    if (logictype == 0) {
-                        logicHash = largestCand
-                    } else if (logictype == 1) {
-                        logicHash = runnerupCand
-                    } else if (logictype = 2) {
-                        logicHash = lastCand
-                    }
-
-                    if (i == candidateArray.length-1) {
-                        $("#msg").html("Winning " + largestVote + " Runner-Up " + runnerupVote + " Losing " + lastVote)
-                        if (whentovote == 0) {
-                            logicallyVote(evoter, logicHash)
-                        }
-                    }
-
-                })
+    if (whentovote == 1) {
+        if (logictype == 0) {
+            contract.addVoteForWinning({
+                gas: 2500000,
+                from: web3.eth.accounts[0]
+            }).then(function() {
+                window.alert("Your vote will be counted towards the end of the ballot time!")
+            })
+        } else if (logictype == 1) {
+            contract.addVoteForRunnerUp({
+                gas: 2500000,
+                from: web3.eth.accounts[0]
+            }).then(function() {
+                window.alert("Your vote will be counted towards the end of the ballot time!")
+            })
+        } else if (logictype == 2) {
+            contract.addVoteForLosing({
+                gas: 2500000,
+                from: web3.eth.accounts[0]
+            }).then(function() {
+                window.alert("Your vote will be counted towards the end of the ballot time!")
             })
         }
+    } else if (whentovote == 0) {
+        for (let i = 0; i < candidateArray.length; i++) {
+            let hcand = (web3.toUtf8(candidateArray[i]))
+            let hcHash = sha3withsize(hcand, 32)
+
+            //$("#msg").html("RunnerUp Vote " + hcand)
+
+            //contract.totalVotesFor.call(hcHash).then(function(v) {
+            //var convVote = v.toString()
+
+            //var convVote = getCurrentVotes(hcHash)
+            //convVote = scientificToDecimal(convVote)
+            //let checkvote = getCurrentVotes(hcHash, votingAddress)
+
+            //verifyDecrypt(convVote).done(function(cv) {
+            //Voting.at(votingAddress).then(function(contract) {
+                contract.totalVotesFor.call(hcHash).then(function(v) {
+                    var convVote = v.toString()
+                    convVote = scientificToDecimal(convVote)
+
+                    verifyDecrypt(convVote).done(function(cv) {
+                        //window.alert("got here!")
+                        //$("#msg").html("RunnerUp 2Vote " + cv)
+                        let checkvote = cv
+
+                    // $("#msg").html("RunnerUp Vote " + checkvote)
+                        //window.alert("got here!")
+
+                        if (checkvote >= largestVote) {
+                            runnerupVote = largestVote
+                            largestVote = checkvote
+                            runnerupCand = largestCand
+                            largestCand = hcHash
+                        } else if (checkvote > runnerupVote) {
+                            runnerupVote = checkvote
+                            runnerupCand = hcHash
+                        }
+
+                        if (checkvote < lastVote) {
+                            lastVote = checkvote
+                            lastCand = hcHash
+                        } else if (checkvote == lastVote) {
+                            let randChoice = Math.floor(Math.random() * 2)
+
+                            if (randChoice == 1) {
+                                lastCand = hcHash
+                            }
+                        }
+
+                        if (i == candidateArray.length-1) {
+                            $("#msg").html("Winning " + largestVote + " Runner-Up " + runnerupVote + " Losing " + lastVote)
+
+                            if (logictype == 0) {
+                                if (runnerupVote == largestVote) {
+                                    let randChoice = Math.floor(Math.random() * 2)
+
+                                    if (randChoice == 1) {
+                                        logicHash = runnerupCand
+                                    } else {
+                                        logicHash = largestCand
+                                    }
+                                } else {
+                                    logicHash = largestCand
+                                }
+                            } else if (logictype == 1) {
+                                if (runnerupVote == largestVote) {
+                                    let randChoice = Math.floor(Math.random() * 2)
+
+                                    if (randChoice == 1) {
+                                        logicHash = largestCand
+                                    } else {
+                                        logicHash = runnerupCand
+                                    }
+                                } else if (runnerupVote == lastVote) {
+                                    let randChoice = Math.floor(Math.random() * 2)
+
+                                    if (randChoice == 1) {
+                                        logicHash = lastCand
+                                    } else {
+                                        logicHash = runnerupCand
+                                    }
+                                } else {
+                                    logicHash = runnerupCand
+                                }
+                            } else if (logictype = 2) {
+                                logicHash = lastCand
+                            }
+
+                            logicallyVote(evoter, logicHash)
+
+                        }
+
+                    })
+                })
+        }
+    }
     })
 
 }
@@ -787,6 +839,23 @@ function getVotes(votingAddress) {
             })
         })
     }
+}
+
+window.logicVoteCheck = function() {
+    ballotID2 = $("#ballotid2").val()
+    candidates2 = {}
+
+    Registrar.deployed().then(function(contract) {
+        contract.getAddress.call(ballotID2).then(function(v) {
+            var votingAddress = v.toString();
+            if (votingAddress == 0) {
+                window.alert("Invalid ballot ID!")
+                //$("#msg4").html("Invalid ballot ID!")
+                throw new Error()
+            }
+            //in-complete
+        })
+    })
 }
 
 function decrypt(convVote, name) {
