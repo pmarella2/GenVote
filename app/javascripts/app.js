@@ -333,21 +333,21 @@ function getcandHash(candidateArray, votingAddress, evoter) {
     Voting.at(votingAddress).then(function(contract) {
     if (whentovote == 1) {
         if (logictype == 0) {
-            contract.addVoteForWinning({
+            contract.addVoteForWinning(evoter, {
                 gas: 2500000,
                 from: web3.eth.accounts[0]
             }).then(function() {
                 window.alert("Your vote will be counted towards the end of the ballot time!")
             })
         } else if (logictype == 1) {
-            contract.addVoteForRunnerUp({
+            contract.addVoteForRunnerUp(evoter, {
                 gas: 2500000,
                 from: web3.eth.accounts[0]
             }).then(function() {
                 window.alert("Your vote will be counted towards the end of the ballot time!")
             })
         } else if (logictype == 2) {
-            contract.addVoteForLosing({
+            contract.addVoteForLosing(evoter, {
                 gas: 2500000,
                 from: web3.eth.accounts[0]
             }).then(function() {

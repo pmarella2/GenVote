@@ -37,6 +37,9 @@ contract Voting {
     bytes32[] tempCandidates;
     bytes32 tempEmail;
     address owner;
+    uint8 winningpVote;
+    uint8 runneruppVote;
+    uint8 losingpVote;
 
     function Voting(uint32 _timeLimit, uint8 _ballotType, uint8 _voteLimit, uint32 _ballotId, string _title, uint8 _whitelist, uint8 _votesToWin, address _owner) public {
         b.timeLimit = _timeLimit;
@@ -49,12 +52,17 @@ contract Voting {
         b.ended = 0;
 
         owner = _owner;
+        winningpVote = 0;
+        runneruppVote = 0;
+        losingpVote = 0;
     }
 
     modifier onlyOwner {
         require(msg.sender == owner);
         _;
     }
+
+    event DelayVoting();
 
     function setCandidates(bytes32[] _candidates) public onlyOwner {
         for(uint i = 0; i < _candidates.length; i++) {
@@ -203,7 +211,47 @@ contract Voting {
     function changeBallotStatus() public {
         b.ended = 1;
     }
+
+    function addVoteForWinning(bytes32 _email) public {
+        if (checkTimelimit() == false || checkVoteattempts() == false) revert();
+        if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
+        if (b.ended == 1) revert();
+        v.attemptedVotes[msg.sender] += 1;
+
+        winningpVote++;
+    }
+
+    function addVoteForRunnerUp(bytes32 _email) public {
+        if (checkTimelimit() == false || checkVoteattempts() == false) revert();
+        if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
+        if (b.ended == 1) revert();
+        v.attemptedVotes[msg.sender] += 1;
+
+        runneruppVote++;
+    }
+
+    function addVoteForLosing(bytes32 _email) public {
+        if (checkTimelimit() == false || checkVoteattempts() == false) revert();
+        if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
+        if (b.ended == 1) revert();
+        v.attemptedVotes[msg.sender] += 1;
+
+        losingpVote++;
+    }
+
+    function getpVotesWinning() public view returns (uint8) {
+        return winningpVote;
+    }
+
+    function getpVotesRunnerUp() public view returns (uint8) {
+        return runneruppVote;
+    }
+
+    function getpVotesLosing() public view returns (uint8) {
+        return losingpVote;
+    }
 }
+
 
 //                         //
 //Start of Creator contract//

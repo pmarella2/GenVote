@@ -10,6 +10,6 @@ module.exports = function(deployer) {
         gas: 800000
     });
     deployer.deploy(Creator, {
-        gas: 2000000
+        gas: 2500000
     });
 };

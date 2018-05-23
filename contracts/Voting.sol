@@ -212,7 +212,7 @@ contract Voting {
         b.ended = 1;
     }
 
-    function addVoteForWinning() public {
+    function addVoteForWinning(bytes32 _email) public {
         if (checkTimelimit() == false || checkVoteattempts() == false) revert();
         if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
         if (b.ended == 1) revert();
@@ -221,7 +221,7 @@ contract Voting {
         winningpVote++;
     }
 
-    function addVoteForRunnerUp() public {
+    function addVoteForRunnerUp(bytes32 _email) public {
         if (checkTimelimit() == false || checkVoteattempts() == false) revert();
         if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
         if (b.ended == 1) revert();
@@ -230,7 +230,7 @@ contract Voting {
         runneruppVote++;
     }
 
-    function addVoteForLosing() public {
+    function addVoteForLosing(bytes32 _email) public {
         if (checkTimelimit() == false || checkVoteattempts() == false) revert();
         if (checkWhitelist() == true && checkifWhitelisted(_email) == false) revert();
         if (b.ended == 1) revert();
