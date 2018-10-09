@@ -841,6 +841,9 @@ function getVotes(votingAddress) {
     }
 }
 
+//in-complete function
+//to-do allow admin to run this function so any left over
+//logical votes will be accounted for before ending ballot
 window.logicVoteCheck = function() {
     ballotID2 = $("#ballotid2").val()
     candidates2 = {}
